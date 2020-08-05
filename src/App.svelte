@@ -1,30 +1,63 @@
 <script lang="ts">
-	export let name: string;
+
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
+
+<main>
+
+  <logo class="text-4xl mt-24">jerzakm.com</logo>
+
+  <header>
+    <h1>Marcin Jerzak</h1>
+    <h2>software developer</h2>
+    <span>
+      web & cloud solutions - creative applications - business intelligence
+    </span>
+  </header>
+
+  <contact>
+    <span>Github</span>
+    <span>LinkedIn</span>
+    <span>dev.to</span>
+    <h1>Connect & talk to me.</h1>
+  </contact>
+
+  <about>
+    <span>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur esse
+      obcaecati, facilis sit autem vitae optio dolores a mollitia incidunt amet
+      veniam, unde quos sapiente rem earum aperiam fugit dolor.
+    </span>
+  </about>
+
+  <projects>
+    <project>
+      <h2>Project name</h2>
+      <span>Project desc</span>
+      <span>Source</span>
+    </project>
+    <project>
+      <h2>Project name</h2>
+      <span>Project desc</span>
+      <span>Source</span>
+    </project>
+    <project>
+      <h2>Project name</h2>
+      <span>Project desc</span>
+      <span>Source</span>
+    </project>
+    <project>
+      <h2>Project name</h2>
+      <span>Project desc</span>
+      <span>Source</span>
+    </project>
+    <project>
+      <h2>Project name</h2>
+      <span>Project desc</span>
+      <span>Source</span>
+    </project>
+  </projects>
+</main>
