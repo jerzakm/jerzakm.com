@@ -1,11 +1,11 @@
 <script lang="ts">
-  import {
-    DevDotTo,
-    Github,
-    Linkedin,
-    ItchDotIo,
-    Twitter,
-  } from '@icons-pack/svelte-simple-icons'
+  // import {
+  //   DevDotTo,
+  //   Github,
+  //   Linkedin,
+  //   ItchDotIo,
+  //   Twitter,
+  // } from '@icons-pack/svelte-simple-icons'
 </script>
 
 <style>
@@ -30,11 +30,11 @@
         software developer
       </h2>
       <socials class="flex justify-around">
-        <Github size={60} />
+        <!-- <Github size={60} />
         <Linkedin size={60} />
         <DevDotTo size={60} />
         <ItchDotIo size={60} />
-        <Twitter size={60} />
+        <Twitter size={60} /> -->
       </socials>
     </header>
 
