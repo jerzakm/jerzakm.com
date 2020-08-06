@@ -1,30 +1,44 @@
 <script lang="ts">
-
+  import {
+    DevDotTo,
+    Github,
+    Linkedin,
+    ItchDotIo,
+    Twitter,
+  } from '@icons-pack/svelte-simple-icons'
 </script>
 
 <style>
-
+  .h-name {
+    font-size: 5vw;
+  }
+  .h-name-subtitle {
+    font-size: 3.69vw;
+    margin-top: -2vw;
+  }
 </style>
 
-<main class="flex">
-
+<main class="flex h-full">
   <logo class="text-2xl mt-4 ml-4">
     <h1>jerzakm.com</h1>
   </logo>
 
-  <div class="flex-1">
+  <div class="flex-1 flex flex-col justify-center">
     <header>
-      <h1>Marcin Jerzak</h1>
-      <h2>software developer</h2>
-      <span>
-        web & cloud solutions - creative applications - business intelligence
-      </span>
+      <h1 class="h-name whitespace-no-wrap">Marcin Jerzak</h1>
+      <h2 class="h-name-subtitle whitespace-no-wrap text-tealime">
+        software developer
+      </h2>
+      <socials class="flex justify-around">
+        <Github size={60} />
+        <Linkedin size={60} />
+        <DevDotTo size={60} />
+        <ItchDotIo size={60} />
+        <Twitter size={60} />
+      </socials>
     </header>
 
-    <contact>
-      <span>Github</span>
-      <span>LinkedIn</span>
-      <span>dev.to</span>
+    <contact class="mt-10">
       <h1>Connect & talk to me.</h1>
     </contact>
 
@@ -39,7 +53,7 @@
 
   <filler class="flex-1" />
 
-  <projects class="flex-1">
+  <projects class="flex-1 flex flex-col justify-center">
     <project>
       <h2>Project name</h2>
       <span>Project desc</span>
@@ -66,4 +80,5 @@
       <span>Source</span>
     </project>
   </projects>
+
 </main>

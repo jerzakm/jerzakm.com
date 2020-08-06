@@ -1,7 +1,11 @@
 module.exports = {
   purge: ["./src/**/*.svelte"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        tealime: '#6affbf'
+      }
+    }
   },
   variants: {},
   plugins: [],
