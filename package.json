@@ -33,6 +33,6 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "@icons-pack/svelte-simple-icons": "^1.6.0"
+
   }
 }
