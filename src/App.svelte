@@ -1,5 +1,7 @@
 <script lang="ts">
-
+  import PhysDiv from './PhysDiv.svelte'
+  import { onMount } from 'svelte'
+  import { physicsDomInit } from './stores'
 </script>
 
 <style>
@@ -11,12 +13,9 @@
     margin-top: -2vw;
   }
 
-  .social-container {
-    filter: invert(100%);
-  }
-
   .social-icon {
     width: 3vw;
+    filter: invert(100%);
   }
 
   .contact-text {
@@ -34,147 +33,102 @@
     height: 1.4vw;
     filter: invert(100%);
   }
+
+  .project-name {
+    font-size: 1.6vw;
+  }
+  .project-desc {
+    font-size: 1.2vw;
+  }
 </style>
 
 <main class="flex h-full">
-  <logo class="text-2xl mt-4 ml-4">
-    <h1>jerzakm.com</h1>
+  <logo class="mt-4 ml-4">
+    <PhysDiv>
+      <h1
+        on:click={() => {
+          physicsDomInit.set(true)
+          document.body.innerHTML = ''
+          physicsDomInit.set(false)
+        }}>
+        jerzakm.com
+      </h1>
+    </PhysDiv>
   </logo>
 
   <div class="flex-1 flex flex-col justify-center">
     <header>
-      <h1 class="h-name whitespace-no-wrap">Marcin Jerzak</h1>
-      <h2 class="h-name-subtitle whitespace-no-wrap text-tealime">
-        software developer
-      </h2>
-      <socials class="flex justify-around social-container mt-8">
-        <img src="icons/github.svg" alt="GitHub icon" class="social-icon" />
-        <img src="icons/linkedin.svg" alt="LinkedIn icon" class="social-icon" />
-        <img src="icons/twitter.svg" alt="Twitter icon" class="social-icon" />
+      <PhysDiv>
+        <h1 class="h-name whitespace-no-wrap">Marcin Jerzak</h1>
+        <h2 class="h-name-subtitle whitespace-no-wrap text-tealime">
+          software developer
+        </h2>
+      </PhysDiv>
 
+      <socials class="flex justify-around mt-8">
+        <PhysDiv>
+          <img src="icons/github.svg" alt="GitHub icon" class="social-icon" />
+        </PhysDiv>
+        <PhysDiv>
+          <img
+            src="icons/linkedin.svg"
+            alt="LinkedIn icon"
+            class="social-icon" />
+        </PhysDiv>
+        <PhysDiv>
+          <img src="icons/twitter.svg" alt="Twitter icon" class="social-icon" />
+        </PhysDiv>
       </socials>
+
     </header>
 
-    <about class="text-3xl mt-20 text-justify">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur esse
-      obcaecati, facilis sit autem vitae optio dolores a mollitia incidunt amet
-      veniam, unde quos sapiente rem earum aperiam fugit dolor.
+    <about class="mt-20">
+      <PhysDiv classes={'text-3xl text-justify'}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur esse
+        obcaecati, facilis sit autem vitae optio dolores a mollitia incidunt
+        amet veniam, unde quos sapiente rem earum aperiam fugit dolor.
+      </PhysDiv>
     </about>
 
     <contact class="mt-10 flex justify-center">
-      <div>
+      <PhysDiv>
         <span class="contact-text">Connect & talk to me.</span>
         <div class="contact-underline bg-tealime" />
-      </div>
+      </PhysDiv>
     </contact>
   </div>
 
   <filler class="flex-1" />
+  <projects class="flex flex-col justify-center">
+    <div class="grid grid-cols-2 col-gap-10">
+      {#each { length: 6 } as j, i}
+        <PhysDiv>
+          <project class="flex flex-col max-w-xs mb-4">
+            <span class="text-tealime project-name">Project name</span>
+            <span class="text-justify project-desc">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            </span>
+            <div class="w-full flex justify-end mt-2">
+              <span class="text-xl flex mr-6">
+                <img
+                  src="icons/github.svg"
+                  alt="GitHub icon"
+                  class="project-source-icon mr-2" />
+                Source
+              </span>
+              <span class="text-xl flex">
+                <img
+                  src="icons/netlify.svg"
+                  alt="Netlify icon"
+                  class="project-source-icon mr-2" />
+                Online
+              </span>
 
-  <projects class="flex-1 flex flex-col justify-center ">
-    <project class="flex flex-col">
-      <span class="text-tealime text-3xl">Project name</span>
-      <span class="text-xl text-justify">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit
-        tempora natus nulla cupiditate quibusdam aliquam impedit reprehenderit,
-        magnam dolore vero.
-      </span>
-      <div class="w-full flex justify-end mt-2">
-        <span class="text-xl flex mr-6">
-          <img
-            src="icons/github.svg"
-            alt="GitHub icon"
-            class="project-source-icon mr-2" />
-          Source
-        </span>
-        <span class="text-xl flex">
-          <img
-            src="icons/netlify.svg"
-            alt="Netlify icon"
-            class="project-source-icon mr-2" />
-          Online
-        </span>
-
-      </div>
-    </project>
-    <project class="flex flex-col">
-      <span class="text-tealime text-3xl">Project name</span>
-      <span class="text-xl text-justify">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit
-        tempora natus nulla cupiditate quibusdam aliquam impedit reprehenderit,
-        magnam dolore vero.
-      </span>
-      <div class="w-full flex justify-end mt-2">
-        <span class="text-xl flex mr-6">
-          <img
-            src="icons/github.svg"
-            alt="GitHub icon"
-            class="project-source-icon mr-2" />
-          Source
-        </span>
-        <span class="text-xl flex">
-          <img
-            src="icons/netlify.svg"
-            alt="Netlify icon"
-            class="project-source-icon mr-2" />
-          Online
-        </span>
-
-      </div>
-    </project>
-
-    <project class="flex flex-col">
-      <span class="text-tealime text-3xl">Project name</span>
-      <span class="text-xl text-justify">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit
-        tempora natus nulla cupiditate quibusdam aliquam impedit reprehenderit,
-        magnam dolore vero.
-      </span>
-      <div class="w-full flex justify-end mt-2">
-        <span class="text-xl flex mr-6">
-          <img
-            src="icons/github.svg"
-            alt="GitHub icon"
-            class="project-source-icon mr-2" />
-          Source
-        </span>
-        <span class="text-xl flex">
-          <img
-            src="icons/netlify.svg"
-            alt="Netlify icon"
-            class="project-source-icon mr-2" />
-          Online
-        </span>
-
-      </div>
-    </project>
-
-    <project class="flex flex-col">
-      <span class="text-tealime text-3xl">Project name</span>
-      <span class="text-xl text-justify">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit
-        tempora natus nulla cupiditate quibusdam aliquam impedit reprehenderit,
-        magnam dolore vero.
-      </span>
-      <div class="w-full flex justify-end mt-2">
-        <span class="text-xl flex mr-6">
-          <img
-            src="icons/github.svg"
-            alt="GitHub icon"
-            class="project-source-icon mr-2" />
-          Source
-        </span>
-        <span class="text-xl flex">
-          <img
-            src="icons/netlify.svg"
-            alt="Netlify icon"
-            class="project-source-icon mr-2" />
-          Online
-        </span>
-
-      </div>
-    </project>
-
+            </div>
+          </project>
+        </PhysDiv>
+      {/each}
+    </div>
   </projects>
 
   <logo class="text-2xl mt-4 ml-4 opacity-0">

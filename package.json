@@ -33,6 +33,6 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-
+    "matter-js": "^0.14.2"
   }
 }
