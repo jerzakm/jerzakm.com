@@ -2,6 +2,7 @@
   import PhysDiv from './PhysDiv.svelte'
   import { onMount } from 'svelte'
   import { physicsDomInit } from './stores'
+  import { initPhysicsWorld } from './physics'
 </script>
 
 <style>
@@ -50,6 +51,7 @@
           physicsDomInit.set(true)
           document.body.innerHTML = ''
           physicsDomInit.set(false)
+          initPhysicsWorld()
         }}>
         jerzakm.com
       </h1>
@@ -58,7 +60,7 @@
 
   <div class="flex-1 flex flex-col justify-center">
     <header>
-      <PhysDiv>
+      <PhysDiv id={'name-header'}>
         <h1 class="h-name whitespace-no-wrap">Marcin Jerzak</h1>
         <h2 class="h-name-subtitle whitespace-no-wrap text-tealime">
           software developer
@@ -66,16 +68,17 @@
       </PhysDiv>
 
       <socials class="flex justify-around mt-8">
-        <PhysDiv>
+        <PhysDiv id={'github-social'} isStatic={false}>
           <img src="icons/github.svg" alt="GitHub icon" class="social-icon" />
         </PhysDiv>
-        <PhysDiv>
+
+        <PhysDiv id={'linkedin-social'} isStatic={false}>
           <img
             src="icons/linkedin.svg"
             alt="LinkedIn icon"
             class="social-icon" />
         </PhysDiv>
-        <PhysDiv>
+        <PhysDiv id="twitter-social" isStatic={false}>
           <img src="icons/twitter.svg" alt="Twitter icon" class="social-icon" />
         </PhysDiv>
       </socials>
@@ -83,7 +86,7 @@
     </header>
 
     <about class="mt-20">
-      <PhysDiv classes={'text-3xl text-justify'}>
+      <PhysDiv classes={'text-3xl text-justify'} isStatic={false}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur esse
         obcaecati, facilis sit autem vitae optio dolores a mollitia incidunt
         amet veniam, unde quos sapiente rem earum aperiam fugit dolor.

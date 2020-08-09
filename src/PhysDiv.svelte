@@ -1,7 +1,13 @@
 <script lang="ts">
   import { physicsDomInit } from './stores'
+  import { physicsDomElements, otherPhysicsBodies } from './physics'
 
-  export let classes = ''
+  import { uuidv4 } from './utils'
+  import { Bodies } from 'matter-js'
+
+  export let classes: string = ''
+  export let isStatic: boolean = true
+  export let id: string = uuidv4()
 
   let element: HTMLElement
 
@@ -12,6 +18,21 @@
     if (physicsInit) {
       loc = element.getBoundingClientRect()
       innerHtml = element.innerHTML
+
+      const body = Bodies.rectangle(
+        loc.x + loc.width / 2,
+        loc.y + loc.height / 2,
+        loc.width,
+        loc.height,
+        {
+          isStatic,
+        }
+      )
+      physicsDomElements.push({
+        element,
+        id,
+        body,
+      })
     } else if (!physicsInit && innerHtml) {
       element.innerHTML = innerHtml
 
