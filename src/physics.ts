@@ -1,13 +1,24 @@
-import { Body, Engine, World, Bodies, Render, Constraint } from 'matter-js'
+import {
+  Body,
+  Engine,
+  World,
+  Bodies,
+  Render,
+  Constraint,
+  Composite,
+} from 'matter-js'
+import { uuidv4 } from './utils'
 
 export const physicsDomElements: IDomBody[] = []
 export const otherPhysicsBodies: any[] = []
+
+let engine: Engine
 
 export const initPhysicsWorld = () => {
   // module aliases
 
   // create an engine
-  const engine = Engine.create()
+  engine = Engine.create()
 
   // create a renderers
   const renderer = Render.create({
@@ -20,9 +31,9 @@ export const initPhysicsWorld = () => {
   })
 
   const ground = Bodies.rectangle(
-    0,
+    window.innerWidth / 2,
     window.innerHeight,
-    window.innerWidth * 3,
+    window.innerWidth - 50,
     60,
     { isStatic: true }
   )
@@ -61,11 +72,59 @@ export const initPhysicsWorld = () => {
 
   // run the renderer
   Render.run(renderer)
-
-  syncDom()
+  syncDom(0)
 }
 
-function syncDom() {
+function techRain() {
+  const element = document.createElement('img')
+  element.src = 'icons/svelte.svg'
+  element.alt = 'Svelte icon'
+
+  const x = Math.random() * window.innerWidth
+  const y = -200
+
+  const sizes = [16, 32, 64, 96, 128]
+  const size = sizes[Math.floor(Math.random() * 5)]
+
+  element.style.width = `${size}px`
+  element.style.height = `${size}px`
+  element.style.position = 'fixed'
+  element.style.left = `${x}px`
+  element.style.top = `${y}px`
+  document.body.appendChild(element)
+
+  const body = Bodies.circle(x + size / 2, y + size / 2, size / 2, {
+    restitution: 0.7,
+    friction: 0.2,
+  })
+  World.add(engine.world, body)
+
+  body.velocity.x = Math.random()
+
+  const svelte = {
+    element: element,
+    body,
+    id: uuidv4(),
+  }
+  // physicsDomElements.push(svelte)
+}
+
+let delta = 0
+let lastTime = 0
+
+let lastRain = 0
+function syncDom(time) {
+  delta = time - lastTime
+  lastTime = time
+
+  lastRain += delta
+
+  if (lastRain > 100) {
+    techRain()
+    lastRain = 0
+    console.log('rainn ')
+  }
+
   for (const e of physicsDomElements) {
     if (e.body) {
       e.element.style.left =
@@ -75,6 +134,13 @@ function syncDom() {
       e.element.style.transform = `rotateZ(${
         (e.body.angle * 180) / Math.PI
       }deg)`
+      e.element.style.transformOrigin = '50% 50%'
+
+      if (e.body.position.y > window.innerHeight + 300) {
+        Composite.remove(engine.world, e.body)
+        e.body = undefined
+        document.body.removeChild(e.element)
+      }
     }
   }
   requestAnimationFrame(syncDom)
