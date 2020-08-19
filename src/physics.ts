@@ -53,6 +53,7 @@ export const initPhysicsWorld = () => {
   })
 
   for (const s of socials) {
+    s.body.density = 1
     const socialConstraint = Constraint.create({
       pointA: {
         x: s.body.position.x,
@@ -62,7 +63,7 @@ export const initPhysicsWorld = () => {
       },
       bodyB: s.body,
       pointB: { x: 0, y: -s.element.getBoundingClientRect().height / 2 },
-      stiffness: 0.001,
+      stiffness: 0.01,
     })
     World.add(engine.world, socialConstraint)
   }
@@ -77,14 +78,17 @@ export const initPhysicsWorld = () => {
 
 function techRain() {
   const element = document.createElement('img')
-  element.src = 'icons/svelte.svg'
+  const icons = ['svelte', 'typescript', 'javascript']
+  element.src = `icons/${icons[Math.floor(Math.random() * icons.length)]}.svg`
   element.alt = 'Svelte icon'
 
-  const x = Math.random() * window.innerWidth
-  const y = -200
+  // const x = Math.random() * window.innerWidth
+  // const y = -200
+  const x = window.innerWidth / 2
+  const y = window.innerHeight / 1.5
 
-  const sizes = [16, 32, 64, 96, 128]
-  const size = sizes[Math.floor(Math.random() * 5)]
+  const sizes = [48]
+  const size = sizes[Math.floor(Math.random() * sizes.length)]
 
   element.style.width = `${size}px`
   element.style.height = `${size}px`
@@ -95,7 +99,7 @@ function techRain() {
 
   const body = Bodies.circle(x + size / 2, y + size / 2, size / 2, {
     restitution: 0.7,
-    friction: 0.2,
+    friction: 0,
   })
   World.add(engine.world, body)
 
@@ -106,7 +110,11 @@ function techRain() {
     body,
     id: uuidv4(),
   }
-  // physicsDomElements.push(svelte)
+  physicsDomElements.push(svelte)
+  Body.applyForce(body, body.position, {
+    x: (Math.random() - 0.5) * 0.008,
+    y: -0.1,
+  })
 }
 
 let delta = 0
@@ -119,7 +127,7 @@ function syncDom(time) {
 
   lastRain += delta
 
-  if (lastRain > 100) {
+  if (lastRain > 250) {
     techRain()
     lastRain = 0
     console.log('rainn ')

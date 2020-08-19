@@ -7,6 +7,7 @@
 
   export let classes: string = ''
   export let isStatic: boolean = true
+  export let isSensor: boolean = false
   export let id: string = uuidv4()
 
   let element: HTMLElement
@@ -26,6 +27,7 @@
         loc.height,
         {
           isStatic,
+          isSensor,
         }
       )
       physicsDomElements.push({
