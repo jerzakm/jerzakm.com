@@ -37,7 +37,7 @@
       architecto consequatur iste velit atque vel, saepe nesciunt, enim fuga
       impedit rerum excepturi inventore.
     </PhysDiv>
-    <divider class="divider mt-4 mb-8" />
+    <PhysDiv classes="divider mt-4 mb-8" />
     <h3 class="font-bold 2xl:text-4xl">
       <PhysDiv>Check out some of my work:</PhysDiv>
     </h3>
@@ -75,7 +75,7 @@
           on:click={() => {
             getPhysical()
           }}>
-          <PhysDiv>Let's get physical</PhysDiv>
+          Let's get physical
         </button>
       {/if}
     </div>
@@ -101,27 +101,35 @@
           </PhysDiv>
         </li>
         <!-- <li>check out my dev socials</li> -->
-        <PhysDiv>
 
-          <li class="flex">
+        <li class="flex">
+
+          <PhysDiv>
+
             <img
               src="icons/github.svg"
               alt="Github profile"
               class="w-6 2xl:w-12 mr-4 2xl:mr-8" />
+          </PhysDiv>
+          <PhysDiv>
             <img
               src="icons/linkedin.svg"
               alt="LinkedIn profile"
               class="w-6 2xl:w-12 mr-4 2xl:mr-8" />
+          </PhysDiv>
+          <PhysDiv>
             <img
               src="icons/dev-dot-to.svg"
               alt="dev.to profile"
               class="w-6 2xl:w-12 mr-4 2xl:mr-8" />
+          </PhysDiv>
+          <PhysDiv>
             <img
               src="icons/twitter.svg"
               alt="Twitter profile"
               class="w-6 2xl:w-12 mr-4 2xl:mr-8" />
-          </li>
-        </PhysDiv>
+          </PhysDiv>
+        </li>
       </ul>
     </div>
   </contact>

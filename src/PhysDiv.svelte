@@ -12,13 +12,13 @@
   let element: HTMLElement
 
   let innerHtml: string
-  let loc: DOMRect
 
   onMount(() => {
-    loc = element.getBoundingClientRect()
+    const initialLoc = element.getBoundingClientRect()
     physicsDomElements.push({
       id,
       element,
+      initialLoc,
     })
   })
 </script>

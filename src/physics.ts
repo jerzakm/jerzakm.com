@@ -6,6 +6,7 @@ let engine: Engine
 
 export const getPhysical = () => {
   initPhysicsWorld()
+  createBounds()
   createDomPhysicsElements()
   syncDom()
 }
@@ -26,15 +27,6 @@ export const initPhysicsWorld = () => {
     },
   })
 
-  const ground = Bodies.rectangle(
-    window.innerWidth / 2,
-    window.innerHeight,
-    window.innerWidth - 50,
-    60,
-    { isStatic: true }
-  )
-  World.add(engine.world, ground)
-
   // run the engine
   Engine.run(engine)
 
@@ -47,21 +39,61 @@ export const initPhysicsWorld = () => {
   renderer.canvas.style.backgroundColor = 'unset'
 }
 
+const createBounds = () => {
+  const bottom = Bodies.rectangle(
+    window.innerWidth / 2,
+    window.innerHeight,
+    window.innerWidth - 50,
+    50,
+    { isStatic: true }
+  )
+  const top = Bodies.rectangle(
+    window.innerWidth / 2,
+    0,
+    window.innerWidth - 50,
+    50,
+    { isStatic: true }
+  )
+  const left = Bodies.rectangle(
+    0,
+    window.innerHeight / 2,
+    50,
+    window.innerHeight - 50,
+    { isStatic: true }
+  )
+  const right = Bodies.rectangle(
+    window.innerWidth,
+    window.innerHeight / 2,
+    50,
+    window.innerHeight - 50,
+    { isStatic: true }
+  )
+  World.add(engine.world, [bottom, top, left, right])
+}
+
 const createDomPhysicsElements = () => {
   for (const el of physicsDomElements) {
     const loc = el.element.getBoundingClientRect()
     el.initialLoc = loc
-    const body = Bodies.rectangle(
-      loc.x + loc.width / 2,
-      loc.y + loc.height / 2,
-      loc.width,
-      loc.height,
-      {
-        isStatic: false,
-      }
-    )
-    el.body = body
-    World.add(engine.world, body)
+  }
+
+  for (const el of physicsDomElements) {
+    function makePhysicsObject() {
+      const loc = el.initialLoc
+      console.log(loc.y)
+      const body = Bodies.rectangle(
+        loc.x + loc.width / 2,
+        loc.y + loc.height / 2,
+        loc.width,
+        loc.height,
+        {
+          isStatic: false,
+        }
+      )
+      el.body = body
+      World.add(engine.world, body)
+    }
+    setTimeout(makePhysicsObject, (window.innerHeight - el.initialLoc.y) * 3)
   }
 }
 
@@ -72,7 +104,13 @@ function syncDom(time = 0) {
   lastTime = time
 
   for (const el of physicsDomElements) {
-    el.element.style.transform = `translate(${0}px,${0}px)`
+    if (el.body && el.initialLoc) {
+      el.element.style.transform = `translate(${
+        el.body.position.x - el.initialLoc.x - el.initialLoc.width / 2
+      }px,${
+        el.body.position.y - el.initialLoc.y - el.initialLoc.height / 2
+      }px) rotate(${el.body.angle * (180 / Math.PI)}deg )`
+    }
   }
 
   requestAnimationFrame(syncDom)
@@ -81,6 +119,6 @@ function syncDom(time = 0) {
 interface IDomBody {
   element: HTMLElement
   body?: Body
-  initialLoc?: DOMRect
+  initialLoc: DOMRect
   id: string
 }
