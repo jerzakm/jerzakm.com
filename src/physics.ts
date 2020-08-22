@@ -1,23 +1,36 @@
-import { Body, Engine, World, Bodies, Render } from 'matter-js'
+import {
+  Body,
+  Engine,
+  World,
+  Bodies,
+  Render,
+  Mouse,
+  MouseConstraint,
+  Events,
+  Query,
+  Vector,
+} from 'matter-js'
 import { physicsDomElements } from './stores'
 
 let engine: Engine
+let render: Render
 
 export const getPhysical = () => {
   initPhysicsWorld()
   createBounds()
   createDomPhysicsElements()
+  mousePhysics()
   syncDom()
 }
 
-export const initPhysicsWorld = () => {
+const initPhysicsWorld = () => {
   // module aliases
 
   // create an engine
   engine = Engine.create()
 
   // create a renderers
-  const renderer = Render.create({
+  render = Render.create({
     element: document.body,
     engine: engine,
     options: {
@@ -30,12 +43,12 @@ export const initPhysicsWorld = () => {
   Engine.run(engine)
 
   // run the renderer
-  Render.run(renderer)
+  Render.run(render)
 
-  renderer.canvas.style.position = 'fixed'
-  renderer.canvas.style.top = '0'
-  renderer.canvas.style.zIndex = '-1'
-  renderer.canvas.style.backgroundColor = 'unset'
+  render.canvas.style.position = 'fixed'
+  render.canvas.style.top = '0'
+  render.canvas.style.zIndex = '-1'
+  render.canvas.style.backgroundColor = 'unset'
 }
 
 const createBounds = () => {
@@ -94,6 +107,56 @@ const createDomPhysicsElements = () => {
     }
     setTimeout(makePhysicsObject, (window.innerHeight - el.initialLoc.y) * 3)
   }
+}
+
+const mousePhysics = () => {
+  //Need to add MouseConstraint for mouse events
+  var mConstraint
+  mConstraint = MouseConstraint.create(engine, {
+    // mouse: mouse,
+    //@ts-ignore
+    constraint: {
+      stiffness: 0.2,
+      render: {
+        visible: false,
+      },
+    },
+  })
+  World.add(engine.world, mConstraint)
+
+  //Add event with 'mousemove'
+
+  const moveVector = {
+    x: 0,
+    y: 0,
+  }
+
+  const mousePostion: Vector = {
+    x: 0,
+    y: 0,
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    moveVector.x = e.movementX
+    moveVector.y = e.movementY
+
+    mousePostion.x = e.clientX
+    mousePostion.y = e.clientY
+  })
+
+  Events.on(mConstraint, 'mousemove', function (event) {
+    //For Matter.Query.point pass "array of bodies" and "mouse position"
+    var foundPhysics = Query.point(engine.world.bodies, event.mouse.position)
+
+    console.log(Vector.magnitude(moveVector))
+    if (foundPhysics.length > 0 && Vector.magnitude(moveVector) > 1.8) {
+      Body.applyForce(
+        foundPhysics[0],
+        mousePostion,
+        Vector.mult(Vector.normalise(moveVector), 0.1)
+      )
+    }
+  })
 }
 
 let delta = 0
