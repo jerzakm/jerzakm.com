@@ -1,13 +1,19 @@
 <script lang="ts">
   import PhysDiv from './PhysDiv.svelte'
   import { onMount } from 'svelte'
-  import { physicsDomInit } from './stores'
-  import { initPhysicsWorld, getPhysical } from './physics'
 
   let windowWidth = window.innerWidth
   window.addEventListener('resize', () => {
     windowWidth = window.innerWidth
   })
+
+  let physicsInit = false
+
+  $: if (physicsInit === true) {
+    import('./physics').then((o) => {
+      o.getPhysical()
+    })
+  }
 </script>
 
 <style>
@@ -73,7 +79,7 @@
         <button
           class="absolute font-bold 2xl:text-3xl"
           on:click={() => {
-            getPhysical()
+            physicsInit = true
           }}>
           Let's get physical
         </button>

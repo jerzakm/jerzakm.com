@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { physicsDomElements } from './physics'
+  import { physicsDomElements } from './stores'
 
   import { uuidv4 } from './utils'
 

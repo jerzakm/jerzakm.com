@@ -1,6 +1,5 @@
 import { Body, Engine, World, Bodies, Render } from 'matter-js'
-
-export const physicsDomElements: IDomBody[] = []
+import { physicsDomElements } from './stores'
 
 let engine: Engine
 
@@ -114,11 +113,4 @@ function syncDom(time = 0) {
   }
 
   requestAnimationFrame(syncDom)
-}
-
-interface IDomBody {
-  element: HTMLElement
-  body?: Body
-  initialLoc: DOMRect
-  id: string
 }
