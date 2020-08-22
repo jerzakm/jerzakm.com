@@ -7,39 +7,23 @@ import {
 } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import serve from 'rollup-plugin-serve'
 
 const production = !process.env.ROLLUP_WATCH;
 
-function serve() {
-	let server;
-
-	function toExit() {
-		if (server) server.kill(0);
-	}
-
-	return {
-		writeBundle() {
-			if (server) return;
-			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-				stdio: ['ignore', 'inherit', 'inherit'],
-				shell: true
-			});
-
-			process.on('SIGTERM', toExit);
-			process.on('exit', toExit);
-		}
-	};
-}
-
+// https://www.youtube.com/watch?v=50ixk9rlujw
 export default {
 	input: 'src/main.ts',
 	output: {
 		sourcemap: true,
-		format: 'iife',
+		format: 'es',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		dir: 'public/build'
 	},
 	plugins: [
+		typescript({
+			sourceMap: !production
+		}),
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,
@@ -56,9 +40,7 @@ export default {
 		// some cases you'll need additional configuration -
 		// consult the documentation for details:
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
-		typescript({
-			sourceMap: !production
-		}),
+
 		resolve({
 			browser: true,
 			dedupe: ['svelte']
@@ -68,11 +50,27 @@ export default {
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
-		!production && serve(),
+		!production && serve({
+			// Launch in browser (default: false)
+			open: true,
+
+			// Show server address in console (default: true)
+			verbose: true,
+
+			// Multiple folders to serve from
+			contentBase: 'public',
+
+			// Options used in setting up server
+			host: 'localhost',
+			port: 3000,
+
+		}),
 
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
-		!production && livereload('public'),
+		!production && livereload({
+			watch: 'public/build'
+		}),
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify

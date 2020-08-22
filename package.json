@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public",
+    "dev": "run-p rollup-dev watch:css",
+    "rollup-dev": "rollup -c -w",
     "validate": "svelte-check",
     "watch:css": "postcss src/global.css -o public/build/global.css -w",
     "build:css": "NODE_ENV=production postcss src/global.css -o public/build/global.css"
@@ -25,7 +25,6 @@
     "rollup-plugin-postcss": "^3.1.4",
     "rollup-plugin-svelte": "^5.2.3",
     "rollup-plugin-terser": "^5.1.2",
-    "sirv-cli": "^1.0.0",
     "svelte": "^3.0.0",
     "svelte-check": "^1.0.0",
     "svelte-preprocess": "^4.0.10",
@@ -34,6 +33,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "matter-js": "^0.14.2"
+    "matter-js": "^0.14.2",
+    "rollup-plugin-serve": "^1.0.3"
   }
 }
