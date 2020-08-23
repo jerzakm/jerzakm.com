@@ -41,19 +41,22 @@
 </script>
 
 <style>
-  .divider {
-    height: 1px;
-    background-color: #121212;
-  }
   .project-number {
     position: absolute;
     transform: translateX(-25px);
     color: grey;
   }
+
+  .social-link::before {
+    content: '';
+  }
+  .social-link::after {
+    content: '';
+  }
 </style>
 
 <main
-  class="flex flex-col sm:flex-row p-10 lg:p-24 h-full w-full overflow-hidden">
+  class="flex flex-col sm:flex-row p-10 xl:p-20 h-full w-full overflow-hidden">
   <about class="flex-1 flex flex-col">
 
     <h1 class="leading-none 2xl:text-5xl">
@@ -146,13 +149,18 @@
         <li class="flex">
 
           <PhysDiv>
+            <a
+              href="https://github.com/jerzakm"
+              alt="Github profile link"
+              class="social-link">
+              <img
+                src="icons/github.svg"
+                alt="Github profile"
+                class="w-6 2xl:w-12 mr-4 2xl:mr-8" />
+            </a>
 
-            <img
-              src="icons/github.svg"
-              alt="Github profile"
-              class="w-6 2xl:w-12 mr-4 2xl:mr-8" />
           </PhysDiv>
-          <PhysDiv>
+          <!-- <PhysDiv>
             <img
               src="icons/linkedin.svg"
               alt="LinkedIn profile"
@@ -169,7 +177,7 @@
               src="icons/twitter.svg"
               alt="Twitter profile"
               class="w-6 2xl:w-12 mr-4 2xl:mr-8" />
-          </PhysDiv>
+          </PhysDiv> -->
         </li>
       </ul>
     </div>
