@@ -35,6 +35,7 @@ export const stopPhysics = () => {
     el.body = undefined
     el.element.style.transition = `1s cubic-bezier(.81,.24,.67,.71)`
     el.element.style.transform = 'none'
+    el.element.style.outline = 'none'
   }
   document.body.removeChild(render.canvas)
 }
@@ -62,7 +63,7 @@ const initPhysicsWorld = () => {
   Engine.run(engine)
 
   // run the renderer
-  Render.run(render)
+  // Render.run(render)
 
   render.canvas.style.position = 'fixed'
   render.canvas.style.top = '0'
@@ -107,6 +108,7 @@ const createDomPhysicsElements = () => {
     //style reset so position change is immediate
     el.element.style.transition = `0s`
     el.element.style.transform = 'none'
+    el.element.style.outline = '1px solid #CCCCCC'
 
     const loc = el.element.getBoundingClientRect()
     el.initialLoc = loc
