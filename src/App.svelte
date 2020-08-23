@@ -1,18 +1,34 @@
 <script lang="ts">
   import PhysDiv from './PhysDiv.svelte'
-  import { onMount } from 'svelte'
+  import { physicsActive } from './stores'
 
   let windowWidth = window.innerWidth
   window.addEventListener('resize', () => {
     windowWidth = window.innerWidth
   })
 
-  let physicsInit = false
+  let physicsLoaded = false
+  let physActive = false
+  let activatePhysics
+  let deactivatePhysics
 
-  $: if (physicsInit === true) {
-    import('./physics').then((o) => {
-      o.getPhysical()
+  physicsActive.subscribe((value) => {
+    physActive = value
+  })
+
+  $: if (physicsLoaded === true) {
+    import('./physics').then((physModule) => {
+      activatePhysics = physModule.getPhysical
     })
+  }
+
+  function startPhysics() {
+    if (activatePhysics) {
+      activatePhysics()
+    } else {
+      console.log('timeout..')
+      setTimeout(startPhysics, 50)
+    }
   }
 </script>
 
@@ -28,7 +44,8 @@
   }
 </style>
 
-<main class="flex flex-col sm:flex-row p-10 lg:p-24 h-full w-full ">
+<main
+  class="flex flex-col sm:flex-row p-10 lg:p-24 h-full w-full overflow-hidden">
   <about class="flex-1 flex flex-col">
 
     <h1 class="leading-none 2xl:text-5xl">
@@ -71,17 +88,24 @@
     mb-16 lg:mb-0">
     <div class="mr-64 text-xl">
       {#if windowWidth > 1360}
-        <div class="get-physical bg-tealime heartbeat absolute">
+        <div
+          class={`get-physical ${physActive ? 'bg-red-400' : 'bg-tealime'} heartbeat absolute`}>
 
-          <span class="opacity-0 2xl:text-3xl">Let's get physical</span>
+          <span class="opacity-0 2xl:text-3xl">
+            {physActive ? `I don't like physics` : `Let's get physical`}
+          </span>
 
         </div>
         <button
           class="absolute font-bold 2xl:text-3xl"
           on:click={() => {
-            physicsInit = true
+            physicsLoaded = true
+            startPhysics()
+            {
+              physActive ? physicsActive.set(false) : physicsActive.set(true)
+            }
           }}>
-          Let's get physical
+          {physActive ? `I don't like physics` : `Let's get physical`}
         </button>
       {/if}
     </div>

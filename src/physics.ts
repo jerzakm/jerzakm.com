@@ -21,13 +21,19 @@ export const getPhysical = () => {
   createDomPhysicsElements()
   mousePhysics()
   syncDom()
+  dragFix()
 }
+
+export const stopPhysics = () => {}
 
 const initPhysicsWorld = () => {
   // module aliases
 
   // create an engine
   engine = Engine.create()
+
+  engine.world.gravity.x = 0
+  engine.world.gravity.y = 0
 
   // create a renderers
   render = Render.create({
@@ -54,29 +60,29 @@ const initPhysicsWorld = () => {
 const createBounds = () => {
   const bottom = Bodies.rectangle(
     window.innerWidth / 2,
-    window.innerHeight,
-    window.innerWidth - 50,
-    50,
+    window.innerHeight + 150,
+    window.innerWidth + 200,
+    350,
     { isStatic: true }
   )
   const top = Bodies.rectangle(
     window.innerWidth / 2,
     0,
-    window.innerWidth - 50,
+    window.innerWidth + 150,
     50,
     { isStatic: true }
   )
   const left = Bodies.rectangle(
-    0,
+    -135,
     window.innerHeight / 2,
-    50,
+    300,
     window.innerHeight - 50,
     { isStatic: true }
   )
   const right = Bodies.rectangle(
-    window.innerWidth,
+    window.innerWidth + 135,
     window.innerHeight / 2,
-    50,
+    300,
     window.innerHeight - 50,
     { isStatic: true }
   )
@@ -89,7 +95,12 @@ const createDomPhysicsElements = () => {
     el.initialLoc = loc
   }
 
-  for (const el of physicsDomElements) {
+  physicsDomElements.sort((a, b) => {
+    return b.initialLoc.y - a.initialLoc.y
+  })
+
+  for (let i = 0; i < physicsDomElements.length; i++) {
+    const el = physicsDomElements[i]
     function makePhysicsObject() {
       const loc = el.initialLoc
       console.log(loc.y)
@@ -105,13 +116,13 @@ const createDomPhysicsElements = () => {
       el.body = body
       World.add(engine.world, body)
     }
-    setTimeout(makePhysicsObject, (window.innerHeight - el.initialLoc.y) * 3)
+    setTimeout(makePhysicsObject, i * 10)
   }
 }
 
 const mousePhysics = () => {
   //Need to add MouseConstraint for mouse events
-  var mConstraint
+  let mConstraint
   mConstraint = MouseConstraint.create(engine, {
     // mouse: mouse,
     //@ts-ignore
@@ -123,8 +134,6 @@ const mousePhysics = () => {
     },
   })
   World.add(engine.world, mConstraint)
-
-  //Add event with 'mousemove'
 
   const moveVector = {
     x: 0,
@@ -148,13 +157,24 @@ const mousePhysics = () => {
     //For Matter.Query.point pass "array of bodies" and "mouse position"
     var foundPhysics = Query.point(engine.world.bodies, event.mouse.position)
 
-    console.log(Vector.magnitude(moveVector))
-    if (foundPhysics.length > 0 && Vector.magnitude(moveVector) > 1.8) {
+    if (foundPhysics.length > 0 && Vector.magnitude(moveVector) > 4.4) {
       Body.applyForce(
         foundPhysics[0],
         mousePostion,
-        Vector.mult(Vector.normalise(moveVector), 0.1)
+        Vector.mult(Vector.normalise(moveVector), 0.01 * foundPhysics[0].mass)
       )
+    }
+  })
+}
+
+const dragFix = () => {
+  Events.on(engine, 'beforeUpdate', () => {
+    for (let i = 0; i < engine.world.bodies.length; i++) {
+      const body = engine.world.bodies[i]
+      if (body.velocity.x > 25 || body.velocity.y > 25) {
+        body.velocity.x = Math.min(25, body.velocity.x)
+        body.velocity.y = Math.min(25, body.velocity.y)
+      }
     }
   })
 }
@@ -168,9 +188,9 @@ function syncDom(time = 0) {
   for (const el of physicsDomElements) {
     if (el.body && el.initialLoc) {
       el.element.style.transform = `translate(${
-        el.body.position.x - el.initialLoc.x - el.initialLoc.width / 2
+        el.body.position.x - el.initialLoc.x - el.initialLoc.width * 0.5
       }px,${
-        el.body.position.y - el.initialLoc.y - el.initialLoc.height / 2
+        el.body.position.y - el.initialLoc.y - el.initialLoc.height * 0.5
       }px) rotate(${el.body.angle * (180 / Math.PI)}deg )`
     }
   }
