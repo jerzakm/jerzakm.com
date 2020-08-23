@@ -24,7 +24,20 @@ export const getPhysical = () => {
   dragFix()
 }
 
-export const stopPhysics = () => {}
+export const stopPhysics = () => {
+  console.log('stopping physics')
+
+  // clearing engine
+  Engine.clear(engine)
+
+  // removing body ref
+  for (const el of physicsDomElements) {
+    el.body = undefined
+    el.element.style.transition = `1s cubic-bezier(.81,.24,.67,.71)`
+    el.element.style.transform = 'none'
+  }
+  document.body.removeChild(render.canvas)
+}
 
 const initPhysicsWorld = () => {
   // module aliases
@@ -91,6 +104,10 @@ const createBounds = () => {
 
 const createDomPhysicsElements = () => {
   for (const el of physicsDomElements) {
+    //style reset so position change is immediate
+    el.element.style.transition = `0s`
+    el.element.style.transform = 'none'
+
     const loc = el.element.getBoundingClientRect()
     el.initialLoc = loc
   }

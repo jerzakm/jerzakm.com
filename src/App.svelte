@@ -19,6 +19,7 @@
   $: if (physicsLoaded === true) {
     import('./physics').then((physModule) => {
       activatePhysics = physModule.getPhysical
+      deactivatePhysics = physModule.stopPhysics
     })
   }
 
@@ -26,8 +27,15 @@
     if (activatePhysics) {
       activatePhysics()
     } else {
-      console.log('timeout..')
       setTimeout(startPhysics, 50)
+    }
+  }
+
+  function stopPhysics() {
+    if (deactivatePhysics) {
+      deactivatePhysics()
+    } else {
+      setTimeout(deactivatePhysics, 50)
     }
   }
 </script>
@@ -100,9 +108,12 @@
           class="absolute font-bold 2xl:text-3xl"
           on:click={() => {
             physicsLoaded = true
-            startPhysics()
-            {
-              physActive ? physicsActive.set(false) : physicsActive.set(true)
+            if (physActive) {
+              physicsActive.set(false)
+              stopPhysics()
+            } else {
+              physicsActive.set(true)
+              startPhysics()
             }
           }}>
           {physActive ? `I don't like physics` : `Let's get physical`}
