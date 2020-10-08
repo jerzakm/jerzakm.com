@@ -55,8 +55,7 @@
   }
 </style>
 
-<main
-  class="flex flex-col sm:flex-row p-10 xl:p-20 h-full w-full overflow-hidden">
+<main class="flex flex-col sm:flex-row p-10 xl:p-20 h-full w-full">
   <about class="flex-1 flex flex-col">
 
     <h1 class="leading-none 2xl:text-5xl">
