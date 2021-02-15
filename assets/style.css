@@ -16,9 +16,23 @@
   font-weight: bold;
 }
 
-h1 {
+body {
   font-family: 'CircularStd';
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: unset;
+}
+
+ul {
+  list-style-type: none;
+}
+
+h1 {
   font-weight: bold;
-  color: white;
-  font-size: 10rem;
 }
