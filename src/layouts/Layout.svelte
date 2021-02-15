@@ -16,12 +16,13 @@
 
   main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 </style>
 
 <svelte:head>
   <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/tailwind.css" />
 </svelte:head>
 
 <main>
