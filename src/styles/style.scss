@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/CircularStd-Normal.eot'); /* IE9 Compat Modes */
+  src: url('fonts/CircularStd-Normal.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('fonts/CircularStd-Normal.woff') format('woff'),
+    /* Pretty Modern Browsers */ url('fonts/CircularStd-Normal.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('fonts/CircularStd-Bold.eot'); /* IE9 Compat Modes */
+  src: url('fonts/CircularStd-Bold.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('fonts/CircularStd-Bold.woff') format('woff'),
+    /* Pretty Modern Browsers */ url('fonts/CircularStd-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+h1,
+h2 {
+  font-weight: bold;
+}
+
+body {
+  font-family: 'CircularStd';
+}
+
+.font-s1 {
+  font-size: 1rem;
+}
+
+.font-s2 {
+  font-size: 1.125rem;
+}
+
+.font-s5 {
+  font-size: 1.9rem;
+}
+
+.font-s6 {
+  font-size: 2.25rem;
+}
+
+.font-s7 {
+  font-size: 3.25rem;
+}
+
+.font-s8 {
+  font-size: clamp(2.5rem, 5rem, 3vw);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: unset;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: black;
+}
+
+body::-webkit-scrollbar {
+  background-color: black;
+  width: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #fff;
+}

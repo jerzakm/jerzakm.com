@@ -13,7 +13,8 @@
     "eslint": "eslint --ext .js .",
     "eslint:fix": "eslint --fix --ext .js .",
     "prettier:svelte": "prettier --write --plugin-search-dir=. ./**/*.svelte",
-    "tailwind": "postcss src/styles/tailwind.css -o assets/tailwind.css"
+    "watch:css": "postcss src/styles/style.scss -o assets/style.css -w",
+    "dev:all": "run-p dev:rollup dev:server watch:css"
   },
   "type": "commonjs",
   "engines": {
@@ -49,7 +50,10 @@
     "eslint-plugin-prettier": "^3.1.4",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
     "postcss-cli": "^7.1.2",
+    "postcss-import": "^10.0.0",
+    "postcss-scss": "^3.0.4",
     "prettier": "^2.1.2",
     "prettier-plugin-svelte": "^1.2.1",
     "rollup": "^2.21.0",

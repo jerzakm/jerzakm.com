@@ -10,19 +10,18 @@
   :global(body) {
     background-color: $darker;
     color: $light;
-    padding: 0;
+    padding: 1rem;
     margin: 0;
   }
 
   main {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 36.5% 1fr;
   }
 </style>
 
 <svelte:head>
   <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="/tailwind.css" />
 </svelte:head>
 
 <main>
