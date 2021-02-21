@@ -28,8 +28,20 @@
     background: $primary;
   }
 
+  .underline-small:after {
+    bottom: -0.22rem;
+    height: 0.3rem;
+  }
+
   .header-font {
     font-size: clamp(2rem, 5rem, 3vw);
+  }
+
+  tags > el {
+    margin-right: 0.8rem;
+  }
+  tags > el:before {
+    content: '#';
   }
 </style>
 
@@ -39,7 +51,7 @@
 
 <!-- ROW 1 -->
 <!-- ABOUT row1 col1 -->
-<about class="square px-12">
+<about class="square px-12 py-10">
   <h2 class="text-5xl text-primary ml-1">Marcin Jerzak</h2>
   <h1 class="flex flex-col leading-none" style="font-size: 5.2rem;">
     <span>Full stack</span><span class="mt-1 mb-16">Developer</span>
@@ -97,6 +109,66 @@
     <a class="underline font-bold">Sign up here</a>
     for a selection of interesting content about both technical and human side of dev world.
   </p>
+  <tags class="font-s4 mt-4 flex flex-wrap">
+    <el>svelte</el>
+    <el>webgl</el>
+    <el>serverless</el>
+    <el>blockchain</el>
+    <el>aws</el>
+    <el>typescript</el>
+    <el>career</el>
+  </tags>
 </div>
 
-<div class="square " />
+<!-- BLOG POSTS row3 col 2,3 -->
+<div class="row-span-2  flex text-light font-s5 px-16 py-10 flex-col">
+  <headerBar class="flex content-between w-full justify-between -mt-2 mb-2">
+    <h1>Blog</h1>
+    <!-- <h1>See more..</h1> -->
+  </headerBar>
+  <content class="grid grid-cols-2 gap-10 mt-8">
+    <featured class="flex flex-col">
+      <img src="img/p1.jpg" class="" />
+      <div class="flex justify-between items-end">
+        <date class="mt-4 text-darkerGrey font-s2">Feb 15 (6 hours ago)</date>
+        <span class="font-s2 text-darkerGrey">5 min read</span>
+      </div>
+      <h1 class="font-s6 leading-none mt-2">Reviewing sveltekit features.</h1>
+      <p class="font-s2 mt-2 text-justify">
+        Dolor nulla velit duis minim quis nostrud irure et. Fugiat deserunt officia aliquip laboris eu voluptate laboris
+        esse do ipsum non. Commodo Lorem culpa ex aliqua incididunt amet dolor officia anim voluptate mollit
+        exercitation. Occaecat aliquip eu laborum nisi esse elit labore.
+      </p>
+      <div class="flex justify-between items-end">
+        <a href="#" alt="Continue reading" class="underline mt-2">Continue reading</a>
+        <span class="font-s2 text-darkerGrey">(6 comments)</span>
+      </div>
+    </featured>
+    <posts class="flex flex-col justify-between">
+      {#each { length: 3 } as g, i}
+        <post class="mb-16">
+          <div class="flex justify-between items-end">
+            <date class=" text-darkerGrey font-s1">Feb 15 (6 hours ago)</date>
+            <span class="font-s1 text-darkerGrey">5 min read</span>
+          </div>
+          <h1 class="font-s5 leading-none mt-2">Reviewing sveltekit features.</h1>
+          <p class="font-s1 mt-2 text-justify">
+            Dolor nulla velit duis minim quis nostrud irure et. Fugiat deserunt officia aliquip laboris eu voluptate
+            laboris esse do ipsum non. Commodo Lorem culpa ex aliqua incididunt amet dolor officia anim voluptate mollit
+            exercitation. Occaecat aliquip eu laborum nisi esse elit labore.
+          </p>
+          <div class="flex justify-between items-end">
+            <a href="#" alt="Continue reading" class="underline underline-small mt-2 font-s3">Continue reading</a>
+            <span class="font-s1 text-darkerGrey">(6 comments)</span>
+          </div>
+        </post>
+      {/each}
+    </posts>
+  </content>
+  <h1 class="font-s6">Read more..</h1>
+</div>
+
+<!-- DOODLE -->
+<div class=" bg-grey square text-dark px-12 pt-16 flex flex-col">
+  <h1 class="font-s6">Mathy doodle #1</h1>
+</div>
