@@ -9,12 +9,12 @@
   .navigation {
     height: 10rem;
     margin-top: -0.5rem;
-    margin-left: 4rem;
+    /* margin-left: 38.5vw; */
   }
 </style>
 
 <div />
-<ul class="flex navigation font-s5">
+<ul class="hidden lg:flex navigation font-s5">
   <li><a href=".">Home</a></li>
   <li><a href=".">Articles</a></li>
   <li><a href=".">Work</a></li>

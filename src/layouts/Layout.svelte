@@ -12,11 +12,10 @@
     color: $light;
     padding: 1rem;
     margin: 0;
+    @apply flex flex-col;
   }
-
   main {
-    display: grid;
-    grid-template-columns: 36.5% 1fr;
+    width: 100%;
   }
 </style>
 
@@ -24,7 +23,7 @@
   <link rel="stylesheet" href="/style.css" />
 </svelte:head>
 
+<Navigation />
 <main>
-  <Navigation />
   {@html templateHtml}
 </main>
