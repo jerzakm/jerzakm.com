@@ -1,12 +1,9 @@
 <script context="module" lang="ts">
-	// export const prerender = true;
-</script>
-
-<script lang="ts">
+	export const prerender = true;
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Lorem ipsum dolor sit amet consectetur.</title>
 </svelte:head>
 
 <section>

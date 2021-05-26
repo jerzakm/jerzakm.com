@@ -4,13 +4,10 @@
 
 <header>
 	<div class="corner">
-		<a href="https://kit.svelte.dev" />
+		<a href="/">MJ</a>
 	</div>
 
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
 			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
 			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></li>
@@ -29,8 +26,6 @@
 	}
 
 	.corner {
-		width: 3em;
-		height: 3em;
 	}
 
 	.corner a {
@@ -39,6 +34,9 @@
 		justify-content: center;
 		width: 100%;
 		height: 100%;
+		color: var(--text-color);
+		font-weight: 700;
+		font-size: 1.5rem;
 	}
 
 	nav {
