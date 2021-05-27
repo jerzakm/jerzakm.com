@@ -22,16 +22,11 @@
 </header>
 
 <style>
-	@media (max-width: 1024px) {
-		header {
-			position: fixed;
-			bottom: 0;
-		}
-		li.active {
-			background-color: var(--secondary-color);
-		}
-	}
 	header {
+		position: fixed;
+		border: solid black;
+		bottom: 0;
+		border-width: 2px 0 0 0;
 		background-color: var(--primary-color);
 		left: 0;
 		display: flex;
@@ -39,13 +34,20 @@
 		width: 100vw;
 		overflow: hidden;
 	}
+	@media (min-width: 1024px) {
+		header {
+			border-width: 0 0 2px 0;
+			bottom: auto;
+			top: 0;
+			position: fixed;
+		}
+	}
 
 	.corner {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		height: 100%;
 		color: var(--text-color);
 		font-weight: 700;
 		font-size: 1.5rem;
@@ -94,7 +96,7 @@
 		padding: 0 1em;
 		color: var(--heading-color);
 		font-weight: 700;
-		font-size: 0.8rem;
+		font-size: var(--font-sm);
 		text-transform: uppercase;
 		letter-spacing: 10%;
 		text-decoration: none;
