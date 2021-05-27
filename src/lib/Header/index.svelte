@@ -24,6 +24,7 @@
 <style>
 	@media (max-width: 1024px) {
 		header {
+			position: fixed;
 			bottom: 0;
 		}
 		li.active {
@@ -31,7 +32,6 @@
 		}
 	}
 	header {
-		position: fixed;
 		background-color: var(--primary-color);
 		left: 0;
 		display: flex;
