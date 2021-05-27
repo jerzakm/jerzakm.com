@@ -8,6 +8,7 @@
 	/* --secondary-color: #d0dde9; */
 	/* --tertiary-color: #edf0f8; */
 	--accent-color: #ff3e00;
+	--secondary-color: rgb(255, 233, 223);
 	/* --heading-color: rgba(0, 0, 0, 0.7); */
 	--text-color: #0e0607;
 	/* --background-without-opacity: rgba(255, 255, 255, 0.7); */
@@ -25,6 +26,7 @@ h3 {
 
 body {
 	margin: 0;
+	padding: 2rem;
 	background-color: var(--primary-color);
 	color: var(--text-color);
 	font-size: 1.4rem;

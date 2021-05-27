@@ -3,32 +3,44 @@
 </script>
 
 <header>
-	<div class="corner">
-		<a href="/">MJ</a>
-	</div>
+	<div class="corner">MJ</div>
 
 	<nav>
 		<ul>
 			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></li>
+			<li class:active={$page.path === '/articles'}>
+				<a sveltekit:prefetch href="/articles">Articles</a>
+			</li>
+			<li class:active={$page.path === '/work'}><a sveltekit:prefetch href="/work">Work</a></li>
+			<li class:active={$page.path === '/contact'}>
+				<a sveltekit:prefetch href="/contact">Contact</a>
+			</li>
 		</ul>
 	</nav>
 
-	<div class="corner">
-		<!-- TODO put something else here? github link? -->
-	</div>
+	<div class="corner" />
 </header>
 
 <style>
+	@media (max-width: 1024px) {
+		header {
+			bottom: 0;
+		}
+		li.active {
+			background-color: var(--secondary-color);
+		}
+	}
 	header {
+		position: fixed;
+		background-color: var(--primary-color);
+		left: 0;
 		display: flex;
 		justify-content: space-between;
+		width: 100vw;
+		overflow: hidden;
 	}
 
 	.corner {
-	}
-
-	.corner a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
