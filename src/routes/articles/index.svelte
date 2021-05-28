@@ -48,14 +48,32 @@
 </svelte:head>
 
 <section>
+	<h1>Articles</h1>
 	{#each articles as article}
 		<article>
-			<h1>{article.title}</h1>
+			<h2>{article.title}</h2>
 			<p>{article.excerpt}</p>
-			<a href={`articles/${article.slug}`}>Read</a>
+			<info>
+				<date>{article.date}</date>
+				<a class="read-link" href={`articles/${article.slug}`}>Read</a>
+			</info>
 		</article>
 	{/each}
 </section>
 
 <style>
+	.read-link {
+		color: var(--primary-color);
+		background-color: var(--text-color);
+		padding: 0.3rem 1.4rem;
+		border-radius: 0.8rem;
+	}
+	.read-link::hover {
+		color: var(--primary-color);
+		background-color: var(--accent-color);
+	}
+	info {
+		display: flex;
+		justify-content: space-between;
+	}
 </style>

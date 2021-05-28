@@ -3,11 +3,10 @@
 </script>
 
 <header>
-	<div class="corner">MJ</div>
+	<div class="corner"><a sveltekit:prefetch href="/">Home</a></div>
 
 	<nav>
 		<ul>
-			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
 			<li class:active={$page.path === '/articles'}>
 				<a sveltekit:prefetch href="/articles">Articles</a>
 			</li>
@@ -39,7 +38,7 @@
 			border-width: 0 0 2px 0;
 			bottom: auto;
 			top: 0;
-			position: fixed;
+			position: static;
 		}
 	}
 
@@ -93,7 +92,7 @@
 		display: flex;
 		height: 100%;
 		align-items: center;
-		padding: 0 1em;
+		padding: 0 1rem;
 		color: var(--heading-color);
 		font-weight: 700;
 		font-size: var(--font-sm);
