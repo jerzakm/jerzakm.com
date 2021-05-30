@@ -1,8 +1,9 @@
 @import '@fontsource/fira-mono';
 
 :root {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+	--font-text: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	--font-header: 'Crimson Pro Medium', 'Century';
 	--font-mono: 'Fira Mono', monospace;
 	--font-xs: 0.8rem;
 	--font-sm: 1rem;
@@ -27,7 +28,7 @@ h1,
 h2,
 h3 {
 	font-weight: 700;
-	font-family: 'Georgia';
+	font-family: var(--font-header);
 }
 h1 {
 	font-size: var(font-xxl);
@@ -40,6 +41,7 @@ h3 {
 }
 
 body {
+	font-family: var(--font-text);
 	margin: 0;
 	padding: 0 2rem 0 2rem;
 	background-color: var(--primary-color);

@@ -9,6 +9,7 @@
 		justify-content: center;
 		align-items: center;
 		padding-top: 40px;
+		width: 100%;
 	}
 
 	footer a {
