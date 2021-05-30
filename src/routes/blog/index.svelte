@@ -55,7 +55,7 @@
 			<p>{article.excerpt}</p>
 			<info>
 				<date>{article.date}</date>
-				<a class="read-link" href={`articles/${article.slug}`}>Read</a>
+				<a class="read-link" href={`blog/${article.slug}`}>Read</a>
 			</info>
 		</article>
 	{/each}
