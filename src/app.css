@@ -41,6 +41,7 @@ h3 {
 
 body {
 	margin: 0;
+	padding: 0 2rem 0 2rem;
 	background-color: var(--primary-color);
 	color: var(--text-color);
 	font-size: var(--font-m);

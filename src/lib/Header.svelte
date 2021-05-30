@@ -3,14 +3,16 @@
 </script>
 
 <header>
-	<div class="corner"><a sveltekit:prefetch href="/">Home</a></div>
+	<div class="corner">
+		<a sveltekit:prefetch href="/" class="home-link">MJ</a>
+	</div>
 
 	<nav>
 		<ul>
-			<li class:active={$page.path === '/articles'}>
-				<a sveltekit:prefetch href="/articles">Articles</a>
-			</li>
 			<li class:active={$page.path === '/work'}><a sveltekit:prefetch href="/work">Work</a></li>
+			<li class:active={$page.path === '/blog'}>
+				<a sveltekit:prefetch href="/blog">Blog</a>
+			</li>
 			<li class:active={$page.path === '/contact'}>
 				<a sveltekit:prefetch href="/contact">Contact</a>
 			</li>
@@ -25,12 +27,12 @@
 		position: fixed;
 		border: solid black;
 		bottom: 0;
+		width: 100%;
 		border-width: 2px 0 0 0;
 		background-color: var(--primary-color);
 		left: 0;
 		display: flex;
 		justify-content: space-between;
-		width: 100vw;
 		overflow: hidden;
 	}
 	@media (min-width: 1024px) {
@@ -46,10 +48,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
 		color: var(--text-color);
 		font-weight: 700;
 		font-size: 1.5rem;
+	}
+	.home-link {
+		color: var(--text-color);
 	}
 
 	nav {
