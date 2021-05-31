@@ -10,16 +10,25 @@
 
 <home>
 	<about>
-		<name>Marcin Jerzak</name>
-		<professionTitle>software developer</professionTitle>
-		<info>
-			<socials>Lorem, ipsum dolor.</socials>
-			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, repudiandae.</p>
-		</info>
+		<name>Lorem ipsum</name>
+		<professionTitle>Lorem ipsum</professionTitle>
+		<info> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, repudiandae. </info>
 	</about>
-	<todo
-		><h1>Let's connect and build something great together</h1>
-		<p>email me at thisemail@email.com or use LiveChat i built for this website</p></todo
+	<contact>
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi tenetur incidunt ullam
+			repellendus odit alias provident adipisci repellat enim dignissimos, vitae veritatis, ducimus
+			facere! Provident accusamus fugit nobis, pariatur blanditiis ullam velit asperiores ipsa
+			possimus consequatur natus delectus aliquid ratione consectetur officiis eligendi ad iste.
+			Iure quos eius quae suscipit voluptas alias ipsam rem nam, dignissimos qui consequatur,
+			veritatis in.
+		</p>
+		<p>
+			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius, totam ab doloribus
+			exercitationem voluptatum quos eum. Repellat error assumenda animi.
+		</p>
+		<h1>Let's connect and build something great together</h1>
+		<p>email me at thisemail@email.com or use LiveChat i built for this website</p></contact
 	>
 </home>
 
@@ -27,6 +36,7 @@
 	home {
 		display: flex;
 		flex-direction: column;
+		flex: 1;
 	}
 	name {
 		font-size: 3rem;
@@ -41,24 +51,24 @@
 		text-align: center;
 	}
 	about {
-		padding-top: 15vh;
 		flex: 1;
 		display: flex;
 		flex-direction: column;
+		/* align-self: flex-end; */
+		align-self: center;
 	}
 
 	info {
 		display: flex;
 		flex-direction: column-reverse;
 		margin-top: 2rem;
-	}
-	socials {
-		flex: 1;
+		text-align: center;
 	}
 	p {
 		flex: 1;
 	}
-	todo {
+	contact {
+		align-self: center;
 		flex: 1;
 	}
 
