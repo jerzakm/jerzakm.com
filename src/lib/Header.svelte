@@ -109,4 +109,12 @@
 	a:hover {
 		color: var(--accent-color);
 	}
+	@media (min-width: 1024px) {
+		a {
+			font-size: 1vw;
+		}
+		nav a {
+			font-size: 1vw;
+		}
+	}
 </style>

@@ -1,5 +1,5 @@
 <footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	<p>Powered by ❤️🍕☕ and <a href="https://kit.svelte.dev">Sveltekit.</a></p>
 </footer>
 
 <style>

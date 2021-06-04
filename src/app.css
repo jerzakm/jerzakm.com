@@ -1,5 +1,7 @@
 @import '@fontsource/fira-mono';
 
+/* FIXING FONT SIZE TODO  */
+/* https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/ */
 :root {
 	--font-text: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -10,8 +12,8 @@
 	--font-m: 1.4rem;
 	--font-l: 1.8rem;
 	--font-xl: 2.4rem;
-	--font-xxl: 2.8rem;
-	--font-xxxl: 3.5rem;
+	--font-xxl: 3rem;
+	--font-xxxl: 4rem;
 	--primary-color: #efede9;
 	/* --secondary-color: #d0dde9; */
 	/* --tertiary-color: #edf0f8; */
@@ -43,10 +45,15 @@ h3 {
 body {
 	font-family: var(--font-text);
 	margin: 0;
-	padding: 0 2rem 0 2rem;
+	padding: 0 3vw 0 3vw;
 	background-color: var(--primary-color);
 	color: var(--text-color);
 	font-size: var(--font-m);
+}
+@media (min-width: 1024px) {
+	body {
+		font-size: 1.1vw;
+	}
 }
 
 a {
