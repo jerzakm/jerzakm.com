@@ -32,6 +32,7 @@
 	home {
 		display: flex;
 		flex-direction: column;
+		flex: 1;
 	}
 	name {
 		font-size: var(--font-xxl);
@@ -48,7 +49,6 @@
 		flex-direction: column;
 	}
 	about {
-		padding-top: 15vh;
 		flex: 1;
 		display: flex;
 		flex-direction: column;
