@@ -11,9 +11,9 @@
 	--font-xs: 0.8rem;
 	--font-sm: 1rem;
 	--font-m: 1.4rem;
-	--font-l: 1.8rem;
-	--font-xl: 2.4rem;
-	--font-xxl: 3rem;
+	--font-l: 1.6rem;
+	--font-xl: 2rem;
+	--font-xxl: 2.5rem;
 	--font-xxxl: 4rem;
 	--primary-color: #efede9;
 	/* --secondary-color: #d0dde9; */
@@ -21,7 +21,7 @@
 	--accent-color: #ff3e00;
 	--secondary-color: rgb(255, 233, 223);
 	/* --heading-color: rgba(0, 0, 0, 0.7); */
-	--text-color: #0e0607;
+	--text-color: #2b1215;
 	/* --background-without-opacity: rgba(255, 255, 255, 0.7); */
 	/* --column-width: 42rem; */
 	/* --column-margin-top: 4rem; */
@@ -34,26 +34,27 @@ h3 {
 	font-family: var(--font-header);
 }
 h1 {
-	font-size: var(font-xxl);
+	font-size: var(--font-xxl);
 }
 h2 {
-	font-size: var(font-xl);
+	font-size: var(--font-xl);
 }
 h3 {
-	font-size: var(font-l);
+	font-size: var(--font-l);
 }
 
 body {
 	font-family: var(--font-text);
 	margin: 0;
-	padding: 0 3vw 0 3vw;
+	/* padding: 0 1rem 0 1rem; */
 	background-color: var(--primary-color);
 	color: var(--text-color);
 	font-size: var(--font-m);
 }
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
 	body {
 		font-size: 1.1vw;
+		padding: 0 3vw 0 3vw;
 	}
 }
 

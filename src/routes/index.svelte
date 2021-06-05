@@ -15,7 +15,7 @@
 		<info> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, repudiandae. </info>
 	</about>
 	<contact>
-		<img src="homePlaceholder.png" alt="abstract geometric art" class="home-img-placeholder" />
+		<!-- <img src="homePlaceholder.png" alt="abstract geometric art" class="home-img-placeholder" /> -->
 		<contactDetails>
 			<h1>Let's connect and build something great together</h1>
 			<p>email me at thisemail@email.com or use LiveChat i built for this website</p>
@@ -49,6 +49,7 @@
 		flex-direction: column;
 	}
 	about {
+		align-self: center;
 		flex: 1;
 		display: flex;
 		flex-direction: column;
@@ -77,7 +78,10 @@
 		text-align: center;
 	}
 
-	@media (min-width: 1024px) {
+	@media (min-width: 1280px) {
+		contact {
+			align-self: flex-end;
+		}
 		info {
 			flex-direction: row;
 		}
@@ -85,13 +89,13 @@
 			flex-direction: row;
 		}
 		info {
-			font-size: 1.3vw;
+			font-size: 1.3vmax;
 		}
 		name {
-			font-size: 3vw;
+			font-size: 3vmax;
 		}
 		professionTitle {
-			font-size: 8vw;
+			font-size: 8vmax;
 		}
 	}
 </style>
