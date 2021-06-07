@@ -8,10 +8,10 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>MJ projects</title>
 </svelte:head>
 
-<section />
-
-<style>
-</style>
+<h1>
+	There's going to be something much more interesting here soon. Please visit soon to check on the
+	progress.
+</h1>

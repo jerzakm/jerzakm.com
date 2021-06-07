@@ -34,6 +34,7 @@
 		display: flex;
 		justify-content: space-between;
 		overflow: hidden;
+		z-index: 9999;
 	}
 	@media (min-width: 1024px) {
 		header {
