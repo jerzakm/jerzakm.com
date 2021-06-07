@@ -21,7 +21,7 @@
 	--accent-color: #ff3e00;
 	--secondary-color: rgb(255, 233, 223);
 	/* --heading-color: rgba(0, 0, 0, 0.7); */
-	--text-color: #2b1215;
+	--text-color: #1d0b0d;
 	/* --background-without-opacity: rgba(255, 255, 255, 0.7); */
 	/* --column-width: 42rem; */
 	/* --column-margin-top: 4rem; */
@@ -53,7 +53,7 @@ body {
 }
 @media (min-width: 1280px) {
 	body {
-		font-size: 1.1vw;
+		font-size: 1.3vmax;
 		padding: 0 3vw 0 3vw;
 	}
 }

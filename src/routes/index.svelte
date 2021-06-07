@@ -11,8 +11,19 @@
 <home>
 	<about>
 		<name>Marcin Jerzak</name>
+
 		<professionTitle><span>software</span> <span>developer</span></professionTitle>
-		<info> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, repudiandae. </info>
+		<aboutDetails> He/Him. EU/Remote 🌍 </aboutDetails>
+		<info>
+			<p>
+				Do you like visual experiments🎆interactive web💻 data driven apps📓 and exploring new
+				technologies🤯?
+			</p>
+			<span
+				><strong>So do I!</strong> Check out my <a href="/work">work</a>,
+				<a href="/blog">stuff I wrote</a> or just keep scrolling.</span
+			>
+		</info>
 	</about>
 	<contact>
 		<!-- <img src="homePlaceholder.png" alt="abstract geometric art" class="home-img-placeholder" /> -->
@@ -24,9 +35,11 @@
 </home>
 
 <style>
-	.home-img-placeholder {
-		max-height: 50vh;
-		margin-top: 3rem;
+	aboutDetails {
+		font-size: 0.9vmax;
+		margin-top: 1.2rem;
+		/* color: var(--accent-color); */
+		max-width: 70%;
 	}
 
 	home {
@@ -57,10 +70,7 @@
 	}
 
 	info {
-		display: flex;
-		flex-direction: column-reverse;
 		max-width: 70%;
-		margin-top: 2rem;
 		font-size: var(--font-l);
 		text-align: justify;
 	}
@@ -82,9 +92,7 @@
 		contact {
 			align-self: flex-end;
 		}
-		info {
-			flex-direction: row;
-		}
+
 		home {
 			flex-direction: row;
 		}
