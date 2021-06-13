@@ -36,6 +36,7 @@
 				hey@jerzakm.com
 				<button
 					class="copy-email-button"
+					aria-label="Copy e-mail"
 					on:click={() => {
 						copyTextToClipboard('hey@jerzakm.com');
 						emailButton.animate(
