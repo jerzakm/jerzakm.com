@@ -51,7 +51,7 @@
 		justify-content: center;
 		color: var(--text-color);
 		font-weight: 700;
-		font-size: 1.5rem;
+		font-size: var(--font-sm);
 	}
 	.home-link {
 		color: var(--text-color);
@@ -110,12 +110,12 @@
 	a:hover {
 		color: var(--accent-color);
 	}
-	@media (min-width: 1024px) {
+	/* @media (min-width: 1024px) {
 		a {
 			font-size: 1vw;
 		}
 		nav a {
 			font-size: 1vw;
 		}
-	}
+	} */
 </style>

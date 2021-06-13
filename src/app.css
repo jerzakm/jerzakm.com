@@ -8,13 +8,13 @@
 		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 	--font-header: 'Crimson Pro Medium', 'Century';
 	--font-mono: 'Fira Mono', monospace;
-	--font-xs: 0.8rem;
-	--font-sm: 1rem;
-	--font-m: 1.4rem;
-	--font-l: 1.6rem;
-	--font-xl: 2rem;
-	--font-xxl: 2.5rem;
-	--font-xxxl: 4rem;
+	--font-xs: calc(0.8rem + 0.25vmax);
+	--font-sm: calc(1rem + 0.25vmax);
+	--font-m: calc(1.5rem + 0.25vmax);
+	--font-l: calc(1.7rem + 0.2vmax);
+	--font-xl: calc(2rem + 0.4vmax);
+	--font-xxl: calc(2.6rem + 0.3vmax);
+	--font-xxxl: calc(1.8rem + 7vmax);
 	--primary-color: #efede9;
 	/* --secondary-color: #d0dde9; */
 	/* --tertiary-color: #edf0f8; */

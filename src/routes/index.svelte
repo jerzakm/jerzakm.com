@@ -147,7 +147,7 @@
 	}
 
 	aboutDetails {
-		font-size: 0.9vmax;
+		font-size: var(--font-sm);
 		margin-top: 1.2rem;
 		max-width: 70%;
 	}
@@ -208,15 +208,6 @@
 
 		home {
 			flex-direction: row;
-		}
-		info {
-			font-size: 1.3vmax;
-		}
-		name {
-			font-size: 3vmax;
-		}
-		professionTitle {
-			font-size: 8vmax;
 		}
 	}
 </style>
