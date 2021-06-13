@@ -7,10 +7,6 @@
 	let emailButton;
 </script>
 
-<svelte:head>
-	<title>MJ</title>
-</svelte:head>
-
 <home>
 	<about>
 		<name>Marcin Jerzak</name>
