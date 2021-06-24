@@ -1,17 +1,17 @@
 <script lang="ts">
-	export let articles: any[];
 	import { onMount } from 'svelte';
+	// import ProjectCard from '$lib/components/ProjectCard.svelte';
 
-	onMount(() => {
-		console.log(articles);
-	});
+	onMount(() => {});
 </script>
 
 <svelte:head>
 	<title>MJ projects</title>
 </svelte:head>
 
-<h1>
-	There's going to be something much more interesting here soon. Please visit soon to check on the
-	progress.
-</h1>
+<h2>
+	There's going to be something much more interesting here soon. Please visit again later to check
+	on the progress.
+</h2>
+
+<!-- <ProjectCard /> -->
