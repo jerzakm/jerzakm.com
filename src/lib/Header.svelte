@@ -7,7 +7,7 @@
 		<a sveltekit:prefetch href="/" class="home-link">MJ</a>
 	</div>
 
-	<nav>
+	<!-- <nav>
 		<ul>
 			<li class:active={$page.path === '/work'}><a sveltekit:prefetch href="/work">Work</a></li>
 			<li class:active={$page.path === '/blog'}>
@@ -17,7 +17,7 @@
 				<a sveltekit:prefetch href="/contact">Contact</a>
 			</li>
 		</ul>
-	</nav>
+	</nav> -->
 
 	<div class="corner" />
 </header>

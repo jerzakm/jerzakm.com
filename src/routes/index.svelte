@@ -19,10 +19,12 @@
 				technologies🤯?
 			</p>
 			<span
-				><strong>So do I!</strong> Check out my <a href="/work">work</a>,
+				><strong>So do I!</strong>
+				<!-- Check out my <a href="/work">work</a>,
 				<a href="/blog">stuff I wrote</a> or just keep scrolling.</span
-			>
-		</info>
+			> -->
+			</span></info
+		>
 	</about>
 	<contact>
 		<contactDetails>
